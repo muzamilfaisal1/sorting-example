@@ -49,9 +49,10 @@ def render_chart(
         yaxis_title="Value",
         title=title,
         template="plotly_white",
+        height=400,
     )
 
-    placeholder.plotly_chart(fig, use_container_width=True)
+    placeholder.plotly_chart(fig, config={"responsive": True})
 
 
 def generate_random_list(size: int) -> List[int]:
@@ -245,7 +246,7 @@ with col_generate:
         st.session_state["data"] = generate_random_list(size)
         st.session_state["list_size"] = size
         st.session_state["sorted"] = False
-        st.experimental_rerun()
+        st.rerun()
 
 with col_sort:
     start_sort = st.button("Start Sorting", type="primary")
